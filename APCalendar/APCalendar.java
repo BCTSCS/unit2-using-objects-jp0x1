@@ -5,7 +5,7 @@ public class APCalendar {
      */
     private static boolean isLeapYear(int year) {
         // A leap year is divisible by 4, but not divisible by 100, unless also divisible by 400
-        boolean isLeap=false;
+        boolean isLeap= (year%400 == 0) || (year%4 ==0 && year%100 != 0);
         return isLeap;
     }
 
@@ -17,6 +17,9 @@ public class APCalendar {
         int count = 0;
         
         return count;
+    }
+    public static int firstDayOfYear(int year){
+        return 2;
     }
 
     /**
@@ -50,10 +53,12 @@ public class APCalendar {
     public static int dayOfWeek(int month, int day, int year) {
         // Modulus by 7 gives us the weekday (0 = Sunday, 1 = Monday, ..., 6 = Saturday)
         int currentDay=0;
-
-
-        
+        int firstDay = firstDayOfYear(year);
+        int numDays = dayOfYear(month, day, year);
+        currentDay = (firstDay + numDays-1)%7;
         return currentDay;
+
+
     }
     /**
      * Accepts a date string in US format (MM/dd/yyyy or MM-dd-yyyy)and parses using Wrapper classes 
@@ -62,16 +67,19 @@ public class APCalendar {
      */
      public static int dayOfWeek(String date ) {
         // Modulus by 7 gives us the weekday (0 = Sunday, 1 = Monday, ..., 6 = Saturday)
-        int currentDay=0;
+        int month = Integer.parseInt(date.substring(0,2));
+        int day = Integer.parseInt(date.substring(2, 5));
+        int year = Integer.parseInt(date.substring(5));
+        return dayOfWeek(month, day, year);
 
 
         
-        return currentDay;
+        // return currentDay;
     }
 
      public static void main(String[] args){
         
-        APCalendar calendar = new AP_Calendar();
+        AP_Calendar calendar = new AP_Calendar();
 
         
         System.out.println("Is 2024 a leap year: " + calendar.isLeapYear(2024)); 
@@ -87,4 +95,3 @@ public class APCalendar {
 
     }
 }
-
