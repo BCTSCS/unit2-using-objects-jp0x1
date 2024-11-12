@@ -59,4 +59,20 @@ public class WordGames extends Actor
     public String toString(){
         return "[" + word + "]";
     }
+    public String scramble(){
+        Random rand = new Random();
+        int index = rand.nextInt(word.length());
+        String substring1 = word.substring(0,index);
+        index = rand.nextInt(word.length() - substring1.length());
+        String substring2 = word.substring(index);
+        return substring2 + substring1;
+        
+    }
+    public static void main(String args[]){
+        WordGames game1 = new WordGames("Beeswax");
+        System.out.println(game1);
+        System.out.println(game1.BananaSplit(3, " have "));
+        System.out.println(game1.BananaSplit('s'," are very cool and have "));
+        System.out.println(game1.scramble());
+    }
 }
