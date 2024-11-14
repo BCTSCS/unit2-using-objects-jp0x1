@@ -9,18 +9,22 @@ public class MethodLab2 {
 		int count = 0;
 		int sum = 0;
 		while (number > 0) {
-			sum += number % 10
+			count++;
+			int digit = number % 10;
+			sum += digit;
+			number /= 10;
 		} 
 		
 	}
 	public static void addHypen(String stuff){
-		System.out.println(stuff.replace(" ","-"));
+		System.out.println(stuff.replace(" ","-").toUpperCase());
 	}
 	public static void main(String[] args){
 		forloop(2, 10, 2);
 		forloop(3, 10, 2);
 		forloop(4, 10, 2);
-		whileloop(234);
-		addHypen("hello world");
+		whileloop(10);
+		addHypen("Hello World!");
+
 	}
 }
