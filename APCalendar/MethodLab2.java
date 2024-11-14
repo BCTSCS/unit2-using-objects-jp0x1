@@ -1,7 +1,7 @@
 public class MethodLab2 {
 	
 	public static void forloop(int start,int stop,int increment){
-		for (int i=start; i<stop; increment++){
+		for (int i=start; i<stop; i+=increment){
 			System.out.println(i);
 		}
 	}
