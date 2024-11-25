@@ -44,5 +44,19 @@ public class Gene {
         return true;
 
     }
+    public static int findStopCodon(String genome, int start){
+	
+	if (genome.length()%3 != 0) {
+return -1;
+
+} 
+	for (int i = start; i < genome.length()-3;i+=3){
+		if (genome.substring(i,i+3).equals(‘TAA’) || genome.substring(i,i+3).equals(‘TAG’) || genome.substring(i,i+3).equals(‘TGA’)){
+	return i;
+}
+	}
+	return -1;
+}
+
     
 }
